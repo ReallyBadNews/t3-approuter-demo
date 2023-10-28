@@ -10,6 +10,12 @@ export default async function PostsAllPage() {
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
           Posts
         </h1>
+        <Link
+          className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+          href="/"
+        >
+          <h3 className="text-2xl font-bold">Go home →</h3>
+        </Link>
         <div className="grid w-full grid-cols-1 gap-4 md:gap-8">
           {posts.map((post) => (
             <Link key={post.id} href={`/posts/${post.id}`}>
