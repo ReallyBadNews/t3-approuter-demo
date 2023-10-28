@@ -1,3 +1,4 @@
+import { TRPCError } from "@trpc/server";
 import { api } from "~/trpc/server";
 
 export default async function PostShowPage({
@@ -5,14 +6,17 @@ export default async function PostShowPage({
 }: {
   params: { id: string };
 }) {
-  // validate with zod
   const id = params.id;
 
   if (typeof id !== "string") {
-    throw new Error("Invalid id");
+    throw new TRPCError({ code: "BAD_REQUEST", message: "Invalid ID" });
   }
 
   const post = await api.post.getById.query(Number(id));
+
+  if (!post) {
+    throw new TRPCError({ code: "NOT_FOUND", message: "Post not found" });
+  }
 
   return (
     <div>
