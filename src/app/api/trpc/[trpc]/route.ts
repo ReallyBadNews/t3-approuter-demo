@@ -5,17 +5,17 @@ import { env } from "~/env.mjs";
 import { appRouter } from "~/server/api/root";
 import { createTRPCContext } from "~/server/api/trpc";
 
-const handler = (req: NextRequest) =>
+const handler = (request: NextRequest) =>
   fetchRequestHandler({
     endpoint: "/api/trpc",
-    req,
+    req: request,
     router: appRouter,
-    createContext: () => createTRPCContext({ req }),
+    createContext: () => createTRPCContext({ req: request }),
     onError:
       env.NODE_ENV === "development"
         ? ({ path, error }) => {
             console.error(
-              `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`
+              `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
             );
           }
         : undefined,

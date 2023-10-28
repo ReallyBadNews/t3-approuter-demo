@@ -10,7 +10,7 @@ import { getUrl, transformer } from "./shared";
 
 export const api = createTRPCReact<AppRouter>();
 
-export function TRPCReactProvider(props: {
+export function TRPCReactProvider(properties: {
   children: React.ReactNode;
   headers: Headers;
 }) {
@@ -28,19 +28,19 @@ export function TRPCReactProvider(props: {
         unstable_httpBatchStreamLink({
           url: getUrl(),
           headers() {
-            const heads = new Map(props.headers);
+            const heads = new Map(properties.headers);
             heads.set("x-trpc-source", "react");
             return Object.fromEntries(heads);
           },
         }),
       ],
-    })
+    }),
   );
 
   return (
     <QueryClientProvider client={queryClient}>
       <api.Provider client={trpcClient} queryClient={queryClient}>
-        {props.children}
+        {properties.children}
       </api.Provider>
     </QueryClientProvider>
   );
