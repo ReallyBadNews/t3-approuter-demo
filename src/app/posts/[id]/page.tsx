@@ -22,7 +22,7 @@ export default async function PostShowPage({
   return (
     <div>
       <h1>{post?.name}</h1>
-      <Link href="/posts/all" className="text-blue-500 underline">
+      <Link href="/posts" className="text-blue-500 underline">
         Back to all posts
       </Link>
     </div>
