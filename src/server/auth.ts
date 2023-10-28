@@ -7,7 +7,7 @@ import {
 import GithubProvider from "next-auth/providers/github";
 
 import { env } from "~/env.mjs";
-import { db } from "~/server/db";
+import { database } from "~/server/db";
 import { mysqlTable } from "~/server/db/schema";
 
 /**
@@ -46,7 +46,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   },
-  adapter: DrizzleAdapter(db, mysqlTable),
+  adapter: DrizzleAdapter(database, mysqlTable),
   providers: [
     GithubProvider({
       clientId: env.GITHUB_CLIENT_ID,
