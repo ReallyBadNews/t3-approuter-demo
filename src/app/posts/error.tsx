@@ -15,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="container">
+    <div>
       <h2>Something went wrong!</h2>
       {error.digest && (
         <>

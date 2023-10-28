@@ -1,4 +1,5 @@
 import { TRPCError } from "@trpc/server";
+import Link from "next/link";
 import { api } from "~/trpc/server";
 
 export default async function PostShowPage({
@@ -21,6 +22,9 @@ export default async function PostShowPage({
   return (
     <div>
       <h1>{post?.name}</h1>
+      <Link href="/posts/all" className="text-blue-500 underline">
+        Back to all posts
+      </Link>
     </div>
   );
 }
