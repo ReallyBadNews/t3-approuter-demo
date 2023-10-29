@@ -28,3 +28,5 @@ export default async function PostShowPage({
     </div>
   );
 }
+
+export const dynamic = "force-dynamic";
