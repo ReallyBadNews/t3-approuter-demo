@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { api } from "~/trpc/server";
+import { DeletePost } from "~/app/_components/delete-post";
 
 export default async function PostsAllPage() {
   const posts = await api.post.getAll.query();
@@ -18,11 +19,20 @@ export default async function PostsAllPage() {
         </Link>
         <div className="grid w-full grid-cols-1 gap-4 md:gap-8">
           {posts.map((post) => (
-            <Link key={post.id} href={`/posts/${post.id}`}>
-              <div className="flex flex-col items-center gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20">
-                <h3 className="text-2xl font-bold">{post.name}</h3>
-              </div>
-            </Link>
+            <div
+              key={post.id}
+              className="relative flex items-center justify-between gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+            >
+              <Link
+                href={`/posts/${post.id}`}
+                className="absolute inset-0 z-0"
+              />
+              <h3 className="self-center text-2xl font-bold">{post.name}</h3>
+              <DeletePost
+                id={post.id}
+                className="relative z-10 rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
+              />
+            </div>
           ))}
         </div>
       </div>
