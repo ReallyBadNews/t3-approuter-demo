@@ -22,8 +22,8 @@
     "drizzle-orm": "^0.28.6",
     "next": "canary",
     "next-auth": "^4.24.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "canary",
+    "react-dom": "canary",
     "superjson": "^1.13.1",
     "zod": "^3.22.4"
   },
