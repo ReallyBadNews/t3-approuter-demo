@@ -20,12 +20,19 @@ export default async function PostShowPage({
   }
 
   return (
-    <div>
-      <h1>{post?.name}</h1>
-      <Link href="/posts" className="text-blue-500 underline">
-        Back to all posts
-      </Link>
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+        <div className="relative flex items-center justify-between gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20">
+          <h1>{post.name}</h1>
+        </div>
+        <Link
+          href="/posts"
+          className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+        >
+          Back to all posts →
+        </Link>
+      </div>
+    </main>
   );
 }
 

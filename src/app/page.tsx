@@ -26,8 +26,7 @@ export default async function Home() {
           </Link>
           <Link
             className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
+            href="/posts"
           >
             <h3 className="text-2xl font-bold">Documentation →</h3>
             <div className="text-lg">
@@ -69,12 +68,10 @@ async function CrudShowcase() {
   return (
     <div className="flex w-full max-w-xs flex-col gap-4">
       {latestPost ? (
-        <>
-          <p className="truncate">
-            {`Your most recent post: `}
-            <Link href={`/posts/${latestPost.id}`}>{latestPost.name}</Link>
-          </p>
-        </>
+        <p className="truncate">
+          {`Your most recent post: `}
+          <Link href={`/posts/${latestPost.id}`}>{latestPost.name}</Link>
+        </p>
       ) : (
         <p>You have no posts yet.</p>
       )}
